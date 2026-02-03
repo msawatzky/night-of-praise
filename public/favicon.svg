@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Night of Praise">
+  <defs>
+    <radialGradient id="g" cx="30%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#55d6ff" stop-opacity="0.85" />
+      <stop offset="55%" stop-color="#2d7cff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#04121f" stop-opacity="1" />
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)" />
+  <path
+    d="M32 12l4.2 12.8 13.4.1-10.8 7.8 4.1 12.9L32 37.6 21.1 45.6l4.1-12.9-10.8-7.8 13.4-.1L32 12z"
+    fill="#f2f6ff"
+    fill-opacity="0.95"
+  />
+</svg>
+

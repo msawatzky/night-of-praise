@@ -1,0 +1,69 @@
+---
+import PlatformPicker from './PlatformPicker.astro';
+
+type Links = {
+  spotify?: string;
+  apple?: string;
+  youtube?: string;
+};
+
+type Song = {
+  title: string;
+  artist?: string;
+  links?: Links;
+};
+
+const { songs } = Astro.props as { songs: Song[] };
+---
+
+<section class="section" id="setlist" aria-label="Setlist" style="min-height: 100svh; display:flex; align-items:center;">
+  <div class="container">
+    <div class="card">
+      <div class="card-inner">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>
+            <div class="kicker">Setlist</div>
+            <div style="font-family: var(--font-serif); font-size: 28px; margin-top: 6px;">Songs for the night</div>
+          </div>
+          <PlatformPicker />
+        </div>
+
+        <div style="height: 10px;"></div>
+
+        <div class="grid" style="gap: 12px;">
+          {songs.map((song) => (
+            <div
+              class="card"
+              style="
+                background: var(--surface-strong);
+                border-radius: var(--radius-sm);
+                box-shadow: none;
+              "
+            >
+              <div class="card-inner" style="display:flex; align-items:center; justify-content:space-between; gap: 12px;">
+                <div style="min-width: 0; flex: 1;">
+                  <div style="font-weight: 800; font-size: 16px; line-height: 1.2;">{song.title}</div>
+                  {song.artist ? <div class="muted" style="margin-top: 4px;">{song.artist}</div> : null}
+                </div>
+
+                <a
+                  class="btn secondary"
+                  data-song-link
+                  data-spotify={song.links?.spotify}
+                  data-apple={song.links?.apple}
+                  data-youtube={song.links?.youtube}
+                  href={song.links?.spotify ?? '#'}
+                  rel="noopener"
+                  target="_blank"
+                >
+                  Listen
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Setlist from '../components/Setlist.astro';
+
+import event from '../data/event.json';
+import rawSetlist from '../data/setlist.yml';
+
+type Links = {
+  spotify?: string;
+  apple?: string;
+  youtube?: string;
+};
+
+type Song = {
+  title: string;
+  artist?: string;
+  links?: Links;
+};
+
+const songs = rawSetlist as Song[];
+---
+
+<BaseLayout title={`${event.title} | ${event.date} at ${event.time}`} description={event.inviteLine}>
+  <main id="top">
+    <!-- Screen 1: Home -->
+    <header class="screen hero" id="home" aria-label="Home">
+      <div class="container">
+        <div class="hero-inner">
+          <img
+            class="hero-logo"
+            src="/logo.png"
+            width="1080"
+            height="1080"
+            alt="Night of Praise"
+            loading="eager"
+            decoding="async"
+          />
+
+          <div class="hero-meta">{event.date} • {event.time}</div>
+        </div>
+      </div>
+
+      <div class="hero-nav" aria-label="Primary navigation">
+        <a class="btn secondary" href="#details">More info</a>
+        <a class="btn secondary" href={event.mapUrl} target="_blank" rel="noopener">Directions</a>
+        <a class="btn secondary" href="#setlist">Setlist</a>
+      </div>
+    </header>
+
+    <!-- Screen 2: Details -->
+    <section class="screen section" id="details" aria-label="Details">
+      <div class="container">
+        <div class="card">
+          <div class="card-inner" style="display:grid; gap: 14px;">
+            <div>
+              <div class="kicker">Details</div>
+              <div style="font-family: var(--font-serif); font-size: 30px; margin-top: 6px;">
+                {event.inviteLine}
+              </div>
+            </div>
+
+            <div class="muted" style="line-height: 1.55;">
+              <div style="font-weight: 800; color: var(--text);">{event.locationName}</div>
+              <div>{event.address}</div>
+            </div>
+
+            <div class="muted" style="line-height: 1.7;">
+              A relaxed evening of worship and community. Come as you are, bring a friend, and join us in song.
+            </div>
+
+            <div style="display:flex; gap: 10px; flex-wrap: wrap;">
+              <a class="btn secondary" href="#setlist">View setlist</a>
+              <a class="btn secondary" href={event.mapUrl} target="_blank" rel="noopener">Open in Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 3: Setlist -->
+    <div class="screen" style="align-items: stretch;">
+      <div style="width: 100%;">
+        <Setlist songs={songs} />
+      </div>
+    </div>
+
+    <footer class="section" aria-label="Footer" style="padding-bottom: 30px;">
+      <div class="container">
+        <div class="card">
+          <div class="card-inner" style="display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap;">
+            <div class="muted">© {new Date().getFullYear()} {event.locationName}</div>
+            <div class="muted">
+              <a href="#home" style="color: var(--muted);">Back to top</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</BaseLayout>
+
