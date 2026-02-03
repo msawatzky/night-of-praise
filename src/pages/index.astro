@@ -22,8 +22,25 @@ const songs = rawSetlist as Song[];
 
 <BaseLayout title={`${event.title} | ${event.date} at ${event.time}`} description={event.inviteLine}>
   <main id="top">
+    <nav class="chevrons" aria-label="Section navigation">
+      <a class="chevron chevron-up" href="#home" aria-label="Previous section">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 14l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </a>
+      <a class="chevron chevron-down" href="#details" aria-label="Next section">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 10l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </a>
+    </nav>
+
     <!-- Screen 1: Home -->
     <header class="screen hero" id="home" aria-label="Home">
+      <div class="hero-top">
+        <div class="hero-meta">{event.date} • {event.time}</div>
+      </div>
+
       <div class="container">
         <div class="hero-inner">
           <img
@@ -35,8 +52,6 @@ const songs = rawSetlist as Song[];
             loading="eager"
             decoding="async"
           />
-
-          <div class="hero-meta">{event.date} • {event.time}</div>
         </div>
       </div>
 
@@ -83,19 +98,46 @@ const songs = rawSetlist as Song[];
         <Setlist songs={songs} />
       </div>
     </div>
-
-    <footer class="section" aria-label="Footer" style="padding-bottom: 30px;">
-      <div class="container">
-        <div class="card">
-          <div class="card-inner" style="display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap;">
-            <div class="muted">© {new Date().getFullYear()} {event.locationName}</div>
-            <div class="muted">
-              <a href="#home" style="color: var(--muted);">Back to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
   </main>
 </BaseLayout>
+
+<script is:inline>
+  (() => {
+    const ids = ['home', 'details', 'setlist'];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const up = document.querySelector('.chevron-up');
+    const down = document.querySelector('.chevron-down');
+    if (!up || !down || sections.length === 0) return;
+
+    const setIndex = (idx) => {
+      const prev = ids[Math.max(0, idx - 1)];
+      const next = ids[Math.min(ids.length - 1, idx + 1)];
+
+      up.setAttribute('href', `#${prev}`);
+      down.setAttribute('href', `#${next}`);
+
+      up.toggleAttribute('data-hidden', idx === 0);
+      down.toggleAttribute('data-hidden', idx === ids.length - 1);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const best = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!best) return;
+
+        const idx = ids.indexOf(best.target.id);
+        if (idx >= 0) setIndex(idx);
+      },
+      { threshold: [0.2, 0.35, 0.5, 0.65, 0.8] }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    setIndex(0);
+  })();
+</script>
 
