@@ -134,7 +134,8 @@ const descriptionHtml = escapeHtml((event as any).description ?? '')
       down.setAttribute('href', `#${next}`);
 
       up.toggleAttribute('data-hidden', idx === 0);
-      down.toggleAttribute('data-hidden', idx === ids.length - 1);
+      // Hide down arrow on first screen (home) and last screen (setlist)
+      down.toggleAttribute('data-hidden', idx === 0 || idx === ids.length - 1);
     };
 
     const observer = new IntersectionObserver(
