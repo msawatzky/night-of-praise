@@ -18,6 +18,20 @@ type Song = {
 };
 
 const songs = rawSetlist as Song[];
+
+const escapeHtml = (s: string) =>
+  s
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+
+// Minimal formatting: support **bold** only.
+const descriptionHtml = escapeHtml((event as any).description ?? '')
+  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+  .replace(/\n\n/g, '<br /><br />')
+  .replace(/\n/g, '<br />');
 ---
 
 <BaseLayout title={`${event.title} | ${event.date} at ${event.time}`} description={event.inviteLine}>
@@ -79,9 +93,9 @@ const songs = rawSetlist as Song[];
               <div>{event.address}</div>
             </div>
 
-            <div class="muted" style="line-height: 1.7;">
-              A relaxed evening of worship and community. Come as you are, bring a friend, and join us in song.
-            </div>
+            <hr class="divider" />
+
+            <div class="muted" style="line-height: 1.7;" set:html={descriptionHtml} />
 
             <div style="display:flex; gap: 10px; flex-wrap: wrap;">
               <a class="btn secondary" href="#setlist">View setlist</a>

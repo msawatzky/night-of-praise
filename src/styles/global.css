@@ -35,7 +35,8 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+  /* Strong snapping helps prevent skipping multiple sections per flick */
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -86,6 +87,7 @@ a:hover {
 .screen {
   min-height: 100svh;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
   align-items: center;
 }
@@ -375,5 +377,13 @@ a:hover {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 6px 0;
 }
 
