@@ -1,21 +1,77 @@
-- title: "How Great Is Our God"
+# Setlist for Night of Praise — update links as needed.
+# Book of Praise entries have no commercial streaming links; leave links empty.
+
+- title: "10,000 Reasons (Bless the Lord)"
+  artist: "Matt Redman"
+  links:
+    spotify: "https://open.spotify.com/track/0fxpHpK3aw2nFWII6yveDD"
+    apple: "https://music.apple.com/us/song/10-000-reasons-bless-the-lord/786990067"
+    youtube: "https://www.youtube.com/watch?v=XtwIT8JjddM&list=RDXtwIT8JjddM&start_radio=1"
+
+- title: "Speak O Lord"
+  artist: "Keith & Kristyn Getty, Stuart Townend"
+  links:
+    spotify: "https://open.spotify.com/track/3aeNn39bXDyE2HNPkdYI62"
+    apple: "https://music.apple.com/us/song/speak-o-lord/715484947"
+    youtube: "https://www.youtube.com/watch?v=aH1Wn4fTiBs&list=RDaH1Wn4fTiBs&start_radio=1"
+
+- title: "How Deep The Father's Love For Us"
+  artist: "Stuart Townend"
+  links:
+    spotify: "https://open.spotify.com/track/3M8hceYLNaUhDAxKBp10eb"
+    apple: "https://music.apple.com/us/song/how-deep-the-fathers-love-for-us/568375716"
+    youtube: "https://www.youtube.com/watch?v=ZVyQZDnKdTk&list=RDZVyQZDnKdTk&start_radio=1"
+
+- title: "From Everlasting"
+  artist: "Sovereign Grace Music"
+  links:
+    spotify: "https://open.spotify.com/track/1HUrq7hFK89PBqiiNNsYBP"
+    apple: "https://music.apple.com/us/album/from-everlasting/1791328417"
+    youtube: "https://www.youtube.com/watch?v=ara0P_pUMO4"
+
+- title: "Psalm 42: 1, 3, 7"
+  artist: "Book of Praise"
+  links: {}
+
+- title: "Holy Forever"
   artist: "Chris Tomlin"
   links:
-    spotify: "https://open.spotify.com/"
-    apple: "https://music.apple.com/"
-    youtube: "https://www.youtube.com/"
+    spotify: "https://open.spotify.com/track/1bfRXeYRGJF8aCxUpQ4yOq"
+    apple: "https://music.apple.com/us/song/holy-forever/1633492521"
+    youtube: "https://www.youtube.com/watch?v=IkHgxKemCRk"
 
-- title: "Goodness of God"
-  artist: "Bethel Music"
+- title: "Song of the Saints"
+  artist: "Phil Wickham"
   links:
-    spotify: "https://open.spotify.com/"
-    apple: "https://music.apple.com/"
-    youtube: "https://www.youtube.com/"
+    spotify: "https://open.spotify.com/track/2ya8YwRadzYVOUzzIfidFH"
+    apple: "https://music.apple.com/us/album/song-of-the-saints/1824551180"
+    youtube: "https://www.youtube.com/watch?v=NmrbS8pI6HU&list=RDNmrbS8pI6HU&start_radio=1"
 
-- title: "Amazing Grace (My Chains Are Gone)"
-  artist: "Chris Tomlin"
+- title: "Hymn 28"
+  artist: "Book of Praise"
+  links: {}
+
+- title: "Let Us of Christ Our Lord and Savior Sing (Hymn 23)"
+  artist: "Book of Praise"
+  links: {}
+
+- title: "How Great Thou Art"
+  artist: ""
   links:
-    spotify: "https://open.spotify.com/"
-    apple: "https://music.apple.com/"
-    youtube: "https://www.youtube.com/"
+    spotify: "https://open.spotify.com/track/3CRtcHFkCFTUdFErL3PXfF"
+    apple: "https://music.apple.com/us/song/how-great-thou-art/1440933412"
+    youtube: "https://www.youtube.com/watch?v=48i4l1715uc"
 
+- title: "Before the Throne of God Above"
+  artist: "Sovereign Grace Music"
+  links:
+    spotify: "https://open.spotify.com/track/4HBBs1mLZPWjSARSj9RtjN"
+    apple: "https://music.apple.com/us/album/before-the-throne-of-god-above-live-at-worshipgod-single/1791328417"
+    youtube: "https://www.youtube.com/watch?v=LULK2nZ6sCc"
+
+- title: "Is He Worthy?"
+  artist: "Andrew Peterson"
+  links:
+    spotify: "https://open.spotify.com/track/5kZEQi54zLu0rfIbgk7YxC"
+    apple: "https://music.apple.com/us/song/is-he-worthy/1560396835"
+    youtube: "https://www.youtube.com/watch?v=OIahc83Kvp4&list=RDOIahc83Kvp4&start_radio=1"

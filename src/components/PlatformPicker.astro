@@ -2,9 +2,9 @@
 export type Platform = 'spotify' | 'apple' | 'youtube';
 
 const platforms: { id: Platform; label: string }[] = [
+  { id: 'youtube', label: 'YouTube' },
   { id: 'spotify', label: 'Spotify' },
   { id: 'apple', label: 'Apple Music' },
-  { id: 'youtube', label: 'YouTube' },
 ];
 ---
 
@@ -34,7 +34,7 @@ const platforms: { id: Platform; label: string }[] = [
     const getPlatform = () => {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved && valid.has(saved)) return saved;
-      return 'spotify';
+      return 'youtube';
     };
 
     const setPlatform = (p) => {
