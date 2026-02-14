@@ -23,23 +23,11 @@ const platforms: { id: Platform; label: string }[] = [
 <script is:inline>
   (() => {
     const STORAGE_KEY = 'nop.platform';
-    const picker = document.querySelector('[data-platform-picker]');
-    if (!picker) return;
-
-    /** @type {HTMLSelectElement | null} */
-    const select = picker.querySelector('select');
-    if (!select) return;
-
     const valid = new Set(['spotify', 'apple', 'youtube']);
     const getPlatform = () => {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved && valid.has(saved)) return saved;
       return 'youtube';
-    };
-
-    const setPlatform = (p) => {
-      localStorage.setItem(STORAGE_KEY, p);
-      updateLinks(p);
     };
 
     const updateLinks = (platform) => {
@@ -48,31 +36,48 @@ const platforms: { id: Platform; label: string }[] = [
       links.forEach((a) => {
         const url = a.dataset[platform];
         if (!url) {
-          a.setAttribute('aria-disabled', 'true');
-          a.classList.add('secondary');
-          a.removeAttribute('href');
-          a.textContent = 'Link unavailable';
+          a.style.display = 'none';
           return;
         }
 
+        a.style.display = '';
         a.setAttribute('href', url);
         a.removeAttribute('aria-disabled');
-        a.classList.remove('secondary');
 
         const label = platform === 'apple' ? 'Apple Music' : platform[0].toUpperCase() + platform.slice(1);
         a.textContent = `Listen on ${label}`;
       });
     };
 
-    const initial = getPlatform();
-    select.value = initial;
-    updateLinks(initial);
+    const init = () => {
+      const picker = document.querySelector('[data-platform-picker]');
+      if (!picker) return;
 
-    select.addEventListener('change', () => {
-      const value = select.value;
-      if (!valid.has(value)) return;
-      setPlatform(value);
-    });
+      /** @type {HTMLSelectElement | null} */
+      const select = picker.querySelector('select');
+      if (!select) return;
+
+      const setPlatform = (p) => {
+        localStorage.setItem(STORAGE_KEY, p);
+        updateLinks(p);
+      };
+
+      const initial = getPlatform();
+      select.value = initial;
+      updateLinks(initial);
+
+      select.addEventListener('change', () => {
+        const value = select.value;
+        if (!valid.has(value)) return;
+        setPlatform(value);
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   })();
 </script>
 
